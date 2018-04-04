@@ -12,7 +12,11 @@
   "files":[
   	"dist"
   ],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/happilymarrieddad/vue2-socketcluster"
+  },
+  "author": "Nick Kotenberg <happilymarrieddad@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "rollup": "^0.57.1",
