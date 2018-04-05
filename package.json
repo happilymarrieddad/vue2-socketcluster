@@ -9,8 +9,8 @@
     "build": "npm run build:main",
     "build:main": "node build/build.main.js"
   },
-  "files":[
-  	"dist"
+  "files": [
+    "dist"
   ],
   "repository": {
     "type": "git",
@@ -19,13 +19,24 @@
   "author": "Nick Kotenberg <happilymarrieddad@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "buffer": "^5.1.0",
+    "bufferutil": "^3.0.3",
+    "crypto": "^1.0.1",
+    "events": "^2.0.0",
+    "http": "0.0.0",
+    "https": "^1.0.0",
+    "querystring": "^0.2.0",
     "rollup": "^0.57.1",
     "rollup-plugin-buble": "^0.19.2",
     "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-replace": "^2.0.0",
     "rollup-watch": "^4.3.1",
-    "uglify-js": "^3.3.18"
+    "uglify-js": "^3.3.18",
+    "url": "^0.11.0",
+    "utf-8-validate": "^4.0.0",
+    "zlib": "^1.0.5"
   },
   "dependencies": {
     "socketcluster-client": "^11.0.0"

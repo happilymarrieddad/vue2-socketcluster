@@ -3,6 +3,7 @@ const buble = require('rollup-plugin-buble')
 const replace = require('rollup-plugin-replace')
 const noderesolve = require('rollup-plugin-node-resolve')
 const commonjs = require('rollup-plugin-commonjs')
+const builtins = require('rollup-plugin-node-builtins')
 const version = process.env.VERSION || require('../package.json').version
 const banner =
 `/**
@@ -43,11 +44,19 @@ function genConfig (opts) {
     input: {
       input: opts.input,
       plugins: [
-        buble(),
+        builtins(),
+        buble({
+          transforms: { forOf: false }
+        }),
+        commonjs({
+          include: ['node_modules/**'],
+          extensions: [ '.js','.coffee','.ts' ]
+        }),
         noderesolve({
           module: true,
           jsnext: true,
-          main: true
+          main: true,
+          preferBuiltins: true
         })
       ]
     },
@@ -56,7 +65,8 @@ function genConfig (opts) {
       file: opts.file,
       format: opts.format,
       name: 'Vue2Socketcluster'
-    }
+    },
+    external: ['websocket']
   }
 
   if (opts.env) {

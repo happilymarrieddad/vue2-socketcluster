@@ -72,3 +72,11 @@ export default {
 
 
 ```
+
+## Test
+```bash
+cd test
+npm i
+npm run dev
+```
+Open up the browser and you will see "Connected" and the status var outputed... assuming you have an instance of socketcluster running on localhost:3000.

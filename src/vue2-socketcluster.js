@@ -1,8 +1,8 @@
-const SC = require('socketcluster-client')
+import * as SC from 'socketcluster-client'
 
 export class SocketFactory {
     constructor(opts) {
-        this.socket = SC.connect(opts)
+        this.socket = 
         this.debug = opts.debug || false
     }
 
@@ -124,14 +124,14 @@ export class SocketFactory {
 
 export function install (_Vue,options) {
     function vue2SocketclusterInit() {
-        var options = this.$options
+        var opts = this.$options
 
-        if (options.socket) {
-            this.$socket = options.socket
-        } else if (options.parent && options.parent.$socket) {
-            this.$socket = options.parent.$socket
+        if (opts.socket) {
+            this.$socket = opts.socket
+        } else if (opts.parent && opts.parent.$socket) {
+            this.$socket = opts.parent.$socket
         } else {
-            var soc = new SocketFactory(options)
+            var soc = SC.connect(options)
 
             this.$socket = soc
         }
