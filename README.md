@@ -17,10 +17,36 @@ Vue.use(Vue2Socketcluster,{
 })
 
 
+
+new Vue({
+	el:"#app",
+	data() {
+		return {
+			authToken:null
+		}
+	},
+	mounted() {
+		let vm = this
+
+		vm.$socket.on('connect',status => {
+
+			if (status.isAuthenticated) {
+				vm.authToken = vm.$socket.getAuthToken()
+				vm.$router.push({ path:'/' })
+			} else {
+				vm.$router.push({ path:'/auth/login' })
+			}
+
+		})
+	}
+})
+
+
+
 ---------------------------
 
 
-// Example
+// Example - some component
 
 export default {
 	name:'test',
@@ -33,9 +59,12 @@ export default {
 		let vm = this
 
 		vm.$socket
-			.emit('all',{ table:"users" })
-			.then(users => {
-				// Do something with the users
+			.emit('somemessage',{ someprop:'someval' })
+			.then(res => {
+				// Do something with the response
+			})
+			.catch(err => {
+				// Do something with the error
 			})
 	}
 }
