@@ -21,12 +21,12 @@ const configs = {
     format: 'umd',
     env: 'development'
   },
-  umdProd: {
-    input: resolve('src/index.js'),
-    file: resolve('dist/vue2-socketcluster.min.js'),
-    format: 'umd',
-    env: 'production'
-  },
+  // umdProd: {
+  //   input: resolve('src/index.js'),
+  //   file: resolve('dist/vue2-socketcluster.min.js'),
+  //   format: 'umd',
+  //   env: 'production'
+  // },
   commonjs: {
     input: resolve('src/index.js'),
     file: resolve('dist/vue2-socketcluster.common.js'),
@@ -46,11 +46,11 @@ function genConfig (opts) {
       plugins: [
         builtins(),
         buble({
-          transforms: { forOf: false }
+          transforms: { dangerousForOf: true }
         }),
         commonjs({
           include: ['node_modules/**'],
-          extensions: [ '.js','.coffee','.ts' ]
+          extensions: [ '.js','.coffee' ]
         }),
         noderesolve({
           module: true,

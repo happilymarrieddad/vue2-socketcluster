@@ -17677,7 +17677,11 @@ var WebSocketServer = (function (EventEmitter) {
     // Terminate all associated clients.
     //
     if (this.clients) {
-      for (var client of this$1.clients) client.terminate();
+      for (var i = 0, list = this$1.clients; i < list.length; i += 1) {
+        var client = list[i];
+
+        client.terminate();
+      }
     }
 
     var server = this._server;
@@ -20510,7 +20514,7 @@ var socketclusterClient_7 = socketclusterClient.clients;
 var socketclusterClient_8 = socketclusterClient.version;
 
 var SocketFactory = function SocketFactory(opts) {
-    this.socket = socketclusterClient_5(opts);
+    this.socket = 
     this.debug = opts.debug || false;
 };
 
@@ -20697,14 +20701,14 @@ SocketFactory.prototype.destroy = function destroy () {
 
 function install (_Vue,options) {
     function vue2SocketclusterInit() {
-        var options = this.$options;
+        var opts = this.$options;
 
-        if (options.socket) {
-            this.$socket = options.socket;
-        } else if (options.parent && options.parent.$socket) {
-            this.$socket = options.parent.$socket;
+        if (opts.socket) {
+            this.$socket = opts.socket;
+        } else if (opts.parent && opts.parent.$socket) {
+            this.$socket = opts.parent.$socket;
         } else {
-            var soc = new SocketFactory(options);
+            var soc = socketclusterClient_5(options);
 
             this.$socket = soc;
         }
