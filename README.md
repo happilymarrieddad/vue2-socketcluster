@@ -25,6 +25,11 @@ new Vue({
 			authToken:null
 		}
 	},
+	methods:{
+		error(err) {
+			// Do something with the error.. I suggest adding alertify
+		}
+	},
 	mounted() {
 		let vm = this
 
@@ -58,14 +63,12 @@ export default {
 	mounted() {
 		let vm = this
 
-		vm.$socket
-			.emit('somemessage',{ someprop:'someval' })
-			.then(res => {
-				// Do something with the response
-			})
-			.catch(err => {
-				// Do something with the error
-			})
+		vm.$socket.emit('somemessage',{ someprop:'someval' },(err,data) => {
+			if (err) return vm.$root.error(err)
+
+			// Do something with data
+		})
+
 	}
 }
 

@@ -1,6 +1,5 @@
-import { install,SocketFactory } from './vue2-socketcluster.js'
+import { install } from './vue2-socketcluster.js'
 
 export default {
-  install,
-  SocketFactory
+  install
 }
