@@ -8,7 +8,7 @@
   "scripts": {
     "build": "npm run build:main && npm run build:minify",
     "build:main": "node build/build.main.js",
-    "build:minify": "uglifyjs dist/vue2-socketcluster.js -o dist/vu2-socketcluster.min.js -c"
+    "build:minify": "uglifyjs dist/vue2-socketcluster.js -o dist/vue2-socketcluster.min.js -c"
   },
   "files": [
     "dist"
