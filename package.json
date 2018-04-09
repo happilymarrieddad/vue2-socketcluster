@@ -40,6 +40,7 @@
     "zlib": "^1.0.5"
   },
   "dependencies": {
+    "component-emitter": "^1.2.1",
     "socketcluster-client": "^11.0.0"
   }
 }
