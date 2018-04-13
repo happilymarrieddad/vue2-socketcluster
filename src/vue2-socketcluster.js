@@ -1,14 +1,15 @@
 import * as SC from 'socketcluster-client'
 import * as Emitter from 'component-emitter'
 
-export function install (_Vue,options) {
+export function install (_Vue,options = {}) {
     function vue2SocketclusterInit() {
+        var propName = options.propName || 'socket'
         var opts = this.$options
 
-        if (opts.socket) {
-            this.$socket = opts.socket
-        } else if (opts.parent && opts.parent.$socket) {
-            this.$socket = opts.parent.$socket
+        if (opts.propName) {
+            this['$'+propName] = opts.propName
+        } else if (opts.parent && opts.parent['$'+propName]) {
+            this['$'+propName] = opts.parent['$'+propName]
         } else {
             let soc = SC.connect(options)
 
@@ -41,7 +42,7 @@ export function install (_Vue,options) {
                 })
             }
 
-            this.$socket = soc
+            this['$'+propName] = soc
         }
 
     }

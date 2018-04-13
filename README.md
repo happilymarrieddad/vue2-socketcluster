@@ -18,7 +18,8 @@ import Vue2Socketcluster from 'vue2-socketcluster'
 
 Vue.use(Vue2Socketcluster,{
 	hostname:"app.example.com",
-	secure:true
+	secure:true,
+	propName:"socket" // Defaults to socket - so if you want vm.$soc you would change this to "soc"
 })
 
 
