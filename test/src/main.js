@@ -10,8 +10,7 @@ Vue.config.productionTip = false
 
 Vue.use(Vue2Socketcluster,{
 	hostname:"localhost",
-	port:3000,
-  propName:'test'
+	port:3000
 })
 
 /* eslint-disable no-new */
@@ -23,7 +22,7 @@ new Vue({
   mounted() {
   	let vm = this
 
-  	vm.$test.on('connect',status => {
+  	vm.$socket.on('connect',status => {
   		console.log('Connected')
   		console.log(status)
   	})

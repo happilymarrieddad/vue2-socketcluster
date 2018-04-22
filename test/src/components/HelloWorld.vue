@@ -90,6 +90,11 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  mounted() {
+    this.$socket.on('simpleMsg',data => {
+      console.log(data)
+    })
   }
 }
 </script>
